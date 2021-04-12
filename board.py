@@ -49,4 +49,11 @@ class board():
         if x > 7 or y > 7 or x < 0 or y < 0:
             print("Can't move that way.")
             return
-        self.board[x][y] = unit
+        if unit.move(x, y):
+            self.board[x][y] = unit
+        else:
+            print("Can't move that way")
+
+    def win(self):
+        #Set win condition
+        print("incomplete")
