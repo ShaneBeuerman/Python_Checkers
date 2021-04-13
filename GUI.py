@@ -3,9 +3,7 @@ from tkinter import *
 from board import board
 
 class Checkerboard():
-    def __init__(self):
-        checkers = board()
-        checkers.displayBoard()
+    def __init__(self, checkers):
         top = tkinter.Tk()
         checkerboard = Canvas(top, width=700, height= 700)
         color = "red"
