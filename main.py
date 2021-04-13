@@ -1,8 +1,10 @@
 from board import board
 from checker import checker
+from GUI import Checkerboard
 
+Checkerboard()
 checkers = board()
-checkers.displayBoard()
+#checkers.displayBoard()
 testChecker = checker("Black", "Man", 0, 1)
 testChecker.move(0,0)
 turn = "W"
@@ -19,3 +21,5 @@ while True:
     else:
         print("Black's turn")
         turn = 'B'
+    if x == "Q":
+        break
