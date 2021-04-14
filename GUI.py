@@ -30,23 +30,30 @@ class Checkerboard():
                 color = "black"
             else:
                 color = "red"
-        checkerboard.place(relx=0.5, rely=0.5, anchor=CENTER)
+        l1 = tkinter.Label(text="Initial x position")
+        l2 = tkinter.Label(text="Initial Y position")
+        l3 = tkinter.Label(text="Ending X position")
+        l4 = tkinter.Label(text="Ending Y position")
         curX = tkinter.Entry()
         curY = tkinter.Entry()
         x = tkinter.Entry()
         y = tkinter.Entry()
 
         def displayInfo():
-            print("It works. You did it.")
-            print(x.get())
-            print(y.get())
-            print(curX.get())
-            print(curY.get())
+            print("Current x:",curX.get())
+            print("Current y:",curY.get())
+            print("Ending X position:",x.get())
+            print("Ending Y position:",y.get())
+            
 
         button = tkinter.Button(text ="Click me.", command = displayInfo)
+        l1.pack()
         curX.pack()
+        l2.pack()
         curY.pack()
+        l3.pack()
         x.pack()
+        l4.pack()
         y.pack()
         button.pack()
         checkerboard.pack()
