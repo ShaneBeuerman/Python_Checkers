@@ -31,5 +31,23 @@ class Checkerboard():
             else:
                 color = "red"
         checkerboard.place(relx=0.5, rely=0.5, anchor=CENTER)
+        curX = tkinter.Entry()
+        curY = tkinter.Entry()
+        x = tkinter.Entry()
+        y = tkinter.Entry()
+
+        def displayInfo():
+            print("It works. You did it.")
+            print(x.get())
+            print(y.get())
+            print(curX.get())
+            print(curY.get())
+
+        button = tkinter.Button(text ="Click me.", command = displayInfo)
+        curX.pack()
+        curY.pack()
+        x.pack()
+        y.pack()
+        button.pack()
         checkerboard.pack()
         top.mainloop()
