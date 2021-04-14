@@ -30,31 +30,43 @@ class Checkerboard():
                 color = "black"
             else:
                 color = "red"
+        curColor = "White"
+        colorLabel = tkinter.Label(text=curColor+"'s Turn")
         l1 = tkinter.Label(text="Initial x position")
         l2 = tkinter.Label(text="Initial Y position")
         l3 = tkinter.Label(text="Ending X position")
         l4 = tkinter.Label(text="Ending Y position")
-        curX = tkinter.Entry()
-        curY = tkinter.Entry()
-        x = tkinter.Entry()
-        y = tkinter.Entry()
+        startX = tkinter.Entry()
+        startY = tkinter.Entry()
+        endX = tkinter.Entry()
+        endY = tkinter.Entry()
 
         def displayInfo():
-            print("Current x:",curX.get())
-            print("Current y:",curY.get())
-            print("Ending X position:",x.get())
-            print("Ending Y position:",y.get())
+            try:
+                curX = int(startX.get())
+                curY = int(startY.get())
+                x = int(endX.get())
+                y = int(endY.get())
+            except ValueError:
+                print("Sorry, not an acceptable input")
+                #popup error message
+                return
+            print("Current x:",curX)
+            print("Current y:",curY)
+            print("Ending X position:",x)
+            print("Ending Y position:",y)
             
 
         button = tkinter.Button(text ="Click me.", command = displayInfo)
+        colorLabel.pack()
         l1.pack()
-        curX.pack()
+        startX.pack()
         l2.pack()
-        curY.pack()
+        startY.pack()
         l3.pack()
-        x.pack()
+        endX.pack()
         l4.pack()
-        y.pack()
+        endY.pack()
         button.pack()
         checkerboard.pack()
         top.mainloop()
