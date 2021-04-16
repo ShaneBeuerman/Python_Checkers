@@ -40,7 +40,7 @@ class Checkerboard():
         startY = tkinter.Entry()
         endX = tkinter.Entry()
         endY = tkinter.Entry()
-
+        
         def displayInfo():
             try:
                 curX = int(startX.get())
@@ -49,13 +49,21 @@ class Checkerboard():
                 y = int(endY.get())
             except ValueError:
                 print("Sorry, not an acceptable input")
-                #popup error message
+                errorPopup()
                 return
             print("Current x:",curX)
             print("Current y:",curY)
             print("Ending X position:",x)
             print("Ending Y position:",y)
             
+        def errorPopup():
+            errormessage = tkinter.Tk()
+            errormessage.wm_title("Error")
+            errorLabel = tkinter.Label(errormessage, text="Sorry, not an acceptable input")
+            errorButton = tkinter.Button(errormessage, text="Okay", command = errormessage.destroy)
+            errorLabel.pack()
+            errorButton.pack()
+            errormessage.mainloop()
 
         button = tkinter.Button(text ="Click me.", command = displayInfo)
         colorLabel.pack()
