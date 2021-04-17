@@ -68,10 +68,6 @@ class Checkerboard():
             else:
                 errorPopup()
                 print("Sorry, not an acceptable input")
-            print("Current x:",curX)
-            print("Current y:",curY)
-            print("Ending X position:",x)
-            print("Ending Y position:",y)
             
         def errorPopup():
             errormessage = tkinter.Tk()

@@ -57,11 +57,30 @@ class board():
         if self.board[initX][initY].color != color:
             print("Can't move opponent's piece")
             return False
-        if self.board[desX][desY] != None and self.board[desX][desY].color == color:
+        if self.board[desX][desY] != None:
             print("Another piece sits there.")
             return False
+        if self.board[initX][initY].move():
+            return True
+        print("Sorry, didn't work")
+        return False
 
     def win(self):
         #Set win condition
-        print("incomplete")
+        whiteCount = 0
+        blackCount = 0
+        for i in range(8):
+            for j in range(8):
+                if self.board[i][j].color == "Black":
+                    blackCount = 1
+                if self.board[i][j].color == "White":
+                    whiteCount = 1
+                if whiteCount == 1 and blackCount == 1:
+                    return False
+        if whiteCount == 0:
+            print("White Loses")
+            return True
+        elif blackCount == 0:
+            print("Black loses")
+            return True
         return False
