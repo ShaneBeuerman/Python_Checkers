@@ -1,8 +1,8 @@
 import tkinter
 from tkinter import *
 from board import board
-
 class Checkerboard():
+    curColor = "White"
     def __init__(self, checkers):
         top = tkinter.Tk()
         checkerboard = Canvas(top, width=700, height= 700)
@@ -30,8 +30,7 @@ class Checkerboard():
                 color = "black"
             else:
                 color = "red"
-        curColor = "White"
-        colorLabel = tkinter.Label(text=curColor+"'s Turn")
+        colorLabel = tkinter.Label(text="White's Turn")
         l1 = tkinter.Label(text="Initial x position")
         l2 = tkinter.Label(text="Initial Y position")
         l3 = tkinter.Label(text="Ending X position")
@@ -41,7 +40,7 @@ class Checkerboard():
         endX = tkinter.Entry()
         endY = tkinter.Entry()
         
-        def displayInfo():
+        def moveUnit():
             try:
                 curX = int(startX.get())
                 curY = int(startY.get())
@@ -50,7 +49,25 @@ class Checkerboard():
             except ValueError:
                 print("Sorry, not an acceptable input")
                 errorPopup()
-                return
+                return 
+            if checkers.placePiece(curX, curY, x, y, self.curColor):
+                #Swap pieces
+                temp = checkers.board[curX][curY] 
+                checkers.board[curX][curY] = checkers.board[x][y]
+                checkers.board[x][y] = temp
+                #Update Board
+
+                #Check if win conditions
+                if checkers.win():
+                    winPopup()
+                #Change Turn
+                if self.curColor == 'White':
+                    self.curColor = 'Black'
+                else:
+                    self.curColor = 'White'
+            else:
+                errorPopup()
+                print("Sorry, not an acceptable input")
             print("Current x:",curX)
             print("Current y:",curY)
             print("Ending X position:",x)
@@ -65,7 +82,16 @@ class Checkerboard():
             errorButton.pack()
             errormessage.mainloop()
 
-        button = tkinter.Button(text ="Click me.", command = displayInfo)
+        def winPopup():
+            winMessage = tkinter.TK()
+            winMessage.wm_title("Congratulations!")
+            winLabel = tkinter.Label(winMessage, text="You won!")
+            winButton = tkinter.Button(winMessage, text="Okay", command = winMessage.destroy)
+            winLabel.pack()
+            winButton.pack()
+            winMessage.mainloop()
+
+        button = tkinter.Button(text ="Click me.", command = moveUnit)
         colorLabel.pack()
         l1.pack()
         startX.pack()

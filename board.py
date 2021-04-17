@@ -44,28 +44,24 @@ class board():
                     print(self.board[i][j].color[0], end=" ")
             print()
 
-    def placePiece(self, initX, initY, desX, dexY, color):
+    def placePiece(self, initX, initY, desX, desY, color):
         if initX > 7 or initY > 7 or initX < 0 or initY < 0:
             print("Initial Position is incorrect")
-            #Error popup
-            return
+            return False
         if desX > 7 or desY > 7 or desX < 0 or desY < 0:
             print("Destination is incorrect")
-            #Error popup
-            return
+            return False
         if self.board[initX][initY] == None:
             print("No Piece there. Try Again.")
-            #Error popup
-            return
+            return False
         if self.board[initX][initY].color != color:
             print("Can't move opponent's piece")
-            #Error popup
-            return
-        if self.board[desX][dexY] != None and self.board[desX][desY].color == color:
+            return False
+        if self.board[desX][desY] != None and self.board[desX][desY].color == color:
             print("Another piece sits there.")
-            #Error popup
-            return
+            return False
 
     def win(self):
         #Set win condition
         print("incomplete")
+        return False
