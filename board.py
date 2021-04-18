@@ -60,7 +60,7 @@ class board():
         if self.board[desX][desY] != None:
             print("Another piece sits there.")
             return False
-        if self.board[initX][initY].move():
+        if self.board[initX][initY].move(desX, desY):
             return True
         print("Sorry, didn't work")
         return False
@@ -71,7 +71,9 @@ class board():
         blackCount = 0
         for i in range(8):
             for j in range(8):
-                if self.board[i][j].color == "Black":
+                if self.board[i][j] == None:
+                    continue
+                if self.board[i][j].color == "Grey":
                     blackCount = 1
                 if self.board[i][j].color == "White":
                     whiteCount = 1

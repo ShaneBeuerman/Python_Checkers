@@ -3,7 +3,7 @@ from checker import checker
 from GUI import Checkerboard
 
 checkers = board()
-game = Checkerboard(checkers)
+game = Checkerboard()
 #checkers.displayBoard()
 #testChecker = checker("Black", "Man", 0, 1)
 #testChecker.move(0,0)
