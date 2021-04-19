@@ -9,34 +9,11 @@ class Checkerboard():
     startY = tkinter.Entry()
     endX = tkinter.Entry()
     endY = tkinter.Entry()
+    checkerboard = Canvas(top, width=700, height= 700)
+
 
     def __init__(self):
-        #top = tkinter.Tk()
-        checkerboard = Canvas(self.top, width=700, height= 700)
-        color = "red"
-        x1 = 100
-        x2 = 164
-        y1 = 100
-        y2 = 164
-        for i in range(8):
-            for j in range(8):
-                checkerboard.create_rectangle(x1, y1, x2, y2, fill = color)
-                if self.checkers.board[i][j] != None:
-                    checkerboard.create_oval(x1, y1, x2, y2, fill = self.checkers.board[i][j].color)
-                x1 += 64
-                x2 += 64
-                if color == "red":
-                    color = "black"
-                else:
-                    color = "red"
-            y1 += 64
-            y2 += 64
-            x1 = 100
-            x2 = 164
-            if color == "red":
-                color = "black"
-            else:
-                color = "red"
+        self.updateBoard()
         colorLabel = tkinter.Label(text="White's Turn")
         l1 = tkinter.Label(text="Initial x position")
         l2 = tkinter.Label(text="Initial Y position")
@@ -54,8 +31,34 @@ class Checkerboard():
         l4.pack()
         self.endY.pack()
         button.pack()
-        checkerboard.pack()
+        self.checkerboard.pack()
         self.top.mainloop()
+
+    def updateBoard(self):
+        color = "red"
+        x1 = 100
+        x2 = 164
+        y1 = 100
+        y2 = 164
+        for i in range(8):
+            for j in range(8):
+                self.checkerboard.create_rectangle(x1, y1, x2, y2, fill = color)
+                if self.checkers.board[i][j] != None:
+                    self.checkerboard.create_oval(x1, y1, x2, y2, fill = self.checkers.board[i][j].color)
+                x1 += 64
+                x2 += 64
+                if color == "red":
+                    color = "black"
+                else:
+                    color = "red"
+            y1 += 64
+            y2 += 64
+            x1 = 100
+            x2 = 164
+            if color == "red":
+                color = "black"
+            else:
+                color = "red"
     
     def moveUnit(self):
         try:
@@ -73,7 +76,7 @@ class Checkerboard():
             self.checkers.board[curX][curY] = self.checkers.board[x][y]
             self.checkers.board[x][y] = temp
             #Update Board
-            self.top.update()
+            self.updateBoard()
             self.checkers.displayBoard()
             #Check if win conditions
             if self.checkers.win():
