@@ -8,19 +8,23 @@ class checker():
         self.status = "King"
     def move(self, col, row):
         if self.status == "King":
-            if (row == self.y+1 or row == self.y-1) and (col == self.x+1 or col == self.x-1):
+            if (row == self.x+1 or row == self.x-1) and (col == self.y+1 or col == self.y-1):
                 return True
             print("Can't move that way")
             return False
 
-        if self.color == "Black":
-            if row == self.y+1 and (col == self.x+1 or col == self.x-1):
+        if self.color == "Grey":
+            if row == self.x+1 and (col == self.y+1 or col == self.y-1):
                 return True
+            print(col, row)
+            print(self.x, self.y)
             print("Can't move that way")
             return False
 
         elif self.color == "White":
-            if row == self.y-1 and (col == self.x+1 or col == self.x-1):
+            if row == self.x-1 and (col == self.y+1 or col == self.y-1):
                 return True
+            print(col, row)
+            print(self.x, self.y)
             print("Can't move that way")
             return False

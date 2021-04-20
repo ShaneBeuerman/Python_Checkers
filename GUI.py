@@ -10,18 +10,19 @@ class Checkerboard():
     endX = tkinter.Entry()
     endY = tkinter.Entry()
     checkerboard = Canvas(top, width=700, height= 700)
-
+    colorLabel = tkinter.Label(text=curColor+"'s Turn")
 
     def __init__(self):
+        self.horizontalCanvas.create_text()
         self.updateBoard()
-        colorLabel = tkinter.Label(text="White's Turn")
+        
         l1 = tkinter.Label(text="Initial x position")
         l2 = tkinter.Label(text="Initial Y position")
         l3 = tkinter.Label(text="Ending X position")
-        l4 = tkinter.Label(text="Ending Y position")           
+        l4 = tkinter.Label(text="Ending Y position")
 
         button = tkinter.Button(text ="Click me.", command = self.moveUnit)
-        colorLabel.pack()
+        self.colorLabel.pack()
         l1.pack()
         self.startX.pack()
         l2.pack()
@@ -59,6 +60,7 @@ class Checkerboard():
                 color = "black"
             else:
                 color = "red"
+        self.colorLabel.config(text=self.curColor+"'s Turn")
     
     def moveUnit(self):
         try:
@@ -75,17 +77,18 @@ class Checkerboard():
             temp = self.checkers.board[curX][curY] 
             self.checkers.board[curX][curY] = self.checkers.board[x][y]
             self.checkers.board[x][y] = temp
+            #Change Turn
+            if self.curColor == 'White':
+                self.curColor = 'Grey'
+            else:
+                self.curColor = 'White'
             #Update Board
             self.updateBoard()
             self.checkers.displayBoard()
             #Check if win conditions
             if self.checkers.win():
                 self.winPopup()
-            #Change Turn
-            if self.curColor == 'White':
-                self.curColor = 'Grey'
-            else:
-                self.curColor = 'White'
+            
         else:
             self.errorPopup()
             print("Sorry, not an acceptable input")
