@@ -6,7 +6,7 @@ class checker():
         self.y = y
     def kingMe(self):
         self.status = "King"
-    def move(self, col, row):
+    def move(self, row, col):
         if self.status == "King":
             if (row == self.x+1 or row == self.x-1) and (col == self.y+1 or col == self.y-1):
                 return True
@@ -14,7 +14,7 @@ class checker():
             return False
 
         if self.color == "Grey":
-            if row == self.x+1 and (col == self.y+1 or col == self.y-1):
+            if col == self.y+1 and (row == self.x+1 or row == self.x-1):
                 return True
             print(col, row)
             print(self.x, self.y)
@@ -22,7 +22,7 @@ class checker():
             return False
 
         elif self.color == "White":
-            if row == self.x-1 and (col == self.y+1 or col == self.y-1):
+            if col == self.y-1 and (row == self.x+1 or row == self.x-1):
                 return True
             print(col, row)
             print(self.x, self.y)

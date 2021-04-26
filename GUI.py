@@ -13,7 +13,6 @@ class Checkerboard():
     colorLabel = tkinter.Label(text=curColor+"'s Turn")
 
     def __init__(self):
-        self.horizontalCanvas.create_text()
         self.updateBoard()
         
         l1 = tkinter.Label(text="Initial x position")
@@ -74,9 +73,9 @@ class Checkerboard():
             return 
         if self.checkers.placePiece(curX, curY, x, y, self.curColor):
             #Swap pieces
-            temp = self.checkers.board[curX][curY] 
-            self.checkers.board[curX][curY] = self.checkers.board[x][y]
-            self.checkers.board[x][y] = temp
+            temp = self.checkers.board[curY][curX] 
+            self.checkers.board[curY][curX] = self.checkers.board[y][x]
+            self.checkers.board[y][x] = temp
             #Change Turn
             if self.curColor == 'White':
                 self.curColor = 'Grey'

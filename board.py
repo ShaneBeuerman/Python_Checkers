@@ -51,16 +51,16 @@ class board():
         if desX > 7 or desY > 7 or desX < 0 or desY < 0:
             print("Destination is incorrect")
             return False
-        if self.board[initX][initY] == None:
+        if self.board[initY][initX] == None:
             print("No Piece there. Try Again.")
             return False
-        if self.board[initX][initY].color != color:
+        if self.board[initY][initX].color != color:
             print("Can't move opponent's piece")
             return False
-        if self.board[desX][desY] != None:
+        if self.board[desY][desX] != None:
             print("Another piece sits there.")
             return False
-        if self.board[initX][initY].move(desX, desY):
+        if self.board[initY][initX].move(desX, desY):
             return True
         print("Sorry, didn't work")
         return False
