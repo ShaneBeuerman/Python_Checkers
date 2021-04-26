@@ -15,6 +15,10 @@ class checker():
 
         if self.color == "Grey":
             if col == self.y+1 and (row == self.x+1 or row == self.x-1):
+                if col == 7:
+                    self.kingMe()
+                self.x = row
+                self.y = col
                 return True
             print(col, row)
             print(self.x, self.y)
@@ -23,6 +27,10 @@ class checker():
 
         elif self.color == "White":
             if col == self.y-1 and (row == self.x+1 or row == self.x-1):
+                if col == 0:
+                    self.kingMe()
+                self.x = row
+                self.y = col
                 return True
             print(col, row)
             print(self.x, self.y)
