@@ -76,17 +76,17 @@ class Checkerboard():
             temp = self.checkers.board[curY][curX] 
             self.checkers.board[curY][curX] = self.checkers.board[y][x]
             self.checkers.board[y][x] = temp
-            #Change Turn
-            if self.curColor == 'White':
-                self.curColor = 'Grey'
-            else:
-                self.curColor = 'White'
             #Update Board
             self.updateBoard()
             self.checkers.displayBoard()
             #Check if win conditions
             if self.checkers.win():
                 self.winPopup()
+            #Change Turn
+            if self.curColor == 'White':
+                self.curColor = 'Grey'
+            else:
+                self.curColor = 'White'
             
         else:
             self.errorPopup()
@@ -104,7 +104,7 @@ class Checkerboard():
     def winPopup(self):
         winMessage = tkinter.Tk()
         winMessage.wm_title("Congratulations!")
-        winLabel = tkinter.Label(winMessage, text="You won!")
+        winLabel = tkinter.Label(winMessage, text=self.curColor+" won!")
         winButton = tkinter.Button(winMessage, text="Okay", command = winMessage.destroy)
         winLabel.pack()
         winButton.pack()

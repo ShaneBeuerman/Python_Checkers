@@ -68,21 +68,21 @@ class board():
     def win(self):
         #Set win condition
         whiteCount = 0
-        blackCount = 0
+        greyCount = 0
         for i in range(8):
             for j in range(8):
                 if self.board[i][j] == None:
                     continue
                 if self.board[i][j].color == "Grey":
-                    blackCount = 1
+                    greyCount = 1
                 if self.board[i][j].color == "White":
                     whiteCount = 1
-                if whiteCount == 1 and blackCount == 1:
+                if whiteCount == 1 and greyCount == 1:
                     return False
         if whiteCount == 0:
             print("White Loses")
             return True
-        elif blackCount == 0:
-            print("Black loses")
+        elif greyCount == 0:
+            print("Grey loses")
             return True
         return False

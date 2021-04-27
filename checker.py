@@ -9,6 +9,8 @@ class checker():
     def move(self, row, col):
         if self.status == "King":
             if (row == self.x+1 or row == self.x-1) and (col == self.y+1 or col == self.y-1):
+                self.x = row
+                self.y = col
                 return True
             print("Can't move that way")
             return False
