@@ -9,7 +9,7 @@ class Checkerboard():
     startY = tkinter.Entry()
     endX = tkinter.Entry()
     endY = tkinter.Entry()
-    checkerboard = Canvas(top, width=700, height= 700)
+    checkerboard = Canvas(top, width=800, height= 800)
     colorLabel = tkinter.Label(text=curColor+"'s Turn")
 
     def __init__(self):
@@ -40,7 +40,13 @@ class Checkerboard():
         x2 = 164
         y1 = 100
         y2 = 164
+        barX = 128
+        barY = 128
         for i in range(8):
+            self.checkerboard.create_text(barX, 50, fill="black", font="Times 20 bold", text= i)
+            barX += 64
+        for i in range(8):
+            self.checkerboard.create_text(64, barY, fill= "black", font="Times 20 bold", text = i)
             for j in range(8):
                 self.checkerboard.create_rectangle(x1, y1, x2, y2, fill = color)
                 if self.checkers.board[i][j] != None:
@@ -59,6 +65,7 @@ class Checkerboard():
                 color = "black"
             else:
                 color = "red"
+            barY += 64
         self.colorLabel.config(text=self.curColor+"'s Turn")
     
     def moveUnit(self):
