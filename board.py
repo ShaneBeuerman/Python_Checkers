@@ -60,7 +60,7 @@ class board():
         if self.board[desY][desX] != None:
             print("Another piece sits there.")
             return False
-        if self.board[initY][initX].move(desX, desY):
+        if self.board[initY][initX].move(desX, desY, self):
             return True
         print("Sorry, didn't work")
         return False
